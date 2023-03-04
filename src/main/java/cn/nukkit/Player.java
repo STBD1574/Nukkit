@@ -2187,25 +2187,26 @@ public class Player extends EntityHuman implements CommandSender, InventoryHolde
                     this.uuid = loginPacket.clientUUID;
                     this.rawUUID = Binary.writeUUID(this.uuid);
 
-                    boolean valid = true;
-                    int len = loginPacket.username.length();
-                    if (len > 16 || len < 3) {
-                        valid = false;
-                    }
+                    boolean valid = false;
+                    //去除Nukkit的名称限制
+                    //int len = loginPacket.username.length();
+                    //if (len > 16 || len < 3) {
+                    //    valid = false;
+                    //}
 
-                    for (int i = 0; i < len && valid; i++) {
-                        char c = loginPacket.username.charAt(i);
-                        if ((c >= 'a' && c <= 'z') ||
-                                (c >= 'A' && c <= 'Z') ||
-                                (c >= '0' && c <= '9') ||
-                                c == '_' || c == ' '
-                        ) {
-                            continue;
-                        }
-
-                        valid = false;
-                        break;
-                    }
+                    //for (int i = 0; i < len && valid; i++) {
+                    //    char c = loginPacket.username.charAt(i);
+                    //    if ((c >= 'a' && c <= 'z') ||
+                    //            (c >= 'A' && c <= 'Z') ||
+                    //            (c >= '0' && c <= '9') ||
+                    //             c == '_' || c == ' '
+                    //    ) {
+                    //        continue;
+                    //    }
+                    //
+                    //    valid = false;
+                    //    break;
+                    //}
 
                     if (!valid || Objects.equals(this.iusername, "rcon") || Objects.equals(this.iusername, "console")) {
                         this.close("", "disconnectionScreen.invalidName");
